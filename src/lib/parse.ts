@@ -1,6 +1,6 @@
-import { ResultType } from '../types/dune';
 import fs from 'fs';
-// import { stringify } from 'csv-stringify';
+
+import { ResultType } from '../types/dune';
 
 export async function saveData(fileName: string, data: ResultType) {
   const columns = data.data.get_execution.execution_succeeded.columns;
@@ -8,12 +8,13 @@ export async function saveData(fileName: string, data: ResultType) {
   fs.appendFileSync(fileName, '\n');
 
   data.data.get_execution.execution_succeeded.data.forEach((x) => {
-    const arr = [];
-    // console.log(columns,x);
+    // eslint-disable-next-line functional/no-let
+    let arr = [];
 
-    for (const c of columns) {
-      arr.push(x[c]);
-    }
+    columns.forEach((c) => {
+      arr = [...arr, x[c]];
+    });
+
     fs.appendFileSync('./data.csv', arr.join(','));
     fs.appendFileSync('./data.csv', '\n');
   });

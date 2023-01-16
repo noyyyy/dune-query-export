@@ -1,15 +1,15 @@
 export declare type ResultType = {
-  data: {
-    get_execution: {
-      execution_queued: any;
-      execution_running: any;
-      execution_succeeded: {
-        execution_id: string;
-        runtime_seconds: number;
-        generated_at: string;
-        columns: [];
-        data: any;
-      }
-    }
-  } 
+  readonly data: {
+    readonly get_execution: {
+      readonly execution_queued: any;
+      readonly execution_running: any;
+      readonly execution_succeeded: {
+        readonly execution_id: string;
+        readonly runtime_seconds: number;
+        readonly generated_at: string;
+        readonly columns: readonly string[];
+        readonly data: any;
+      };
+    };
+  };
 };
