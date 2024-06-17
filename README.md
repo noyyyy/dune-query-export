@@ -1,3 +1,5 @@
+# NOTE: Don't work anymore
+
 # dune-query-export
 
 Export your dune query to csv
